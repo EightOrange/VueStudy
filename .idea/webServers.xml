@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="32d6ab5d-8033-48f9-8bd7-682f2af68367" name="localhost" url="http://localhost:62252">
+        <fileTransfer mountedRoot="F:\test\vue_study\day2" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>
