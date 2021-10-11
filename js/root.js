@@ -5,15 +5,13 @@ const x = new Vue({
     el: '#root',
     data:function () {
         return{
-            name:`hello,world!`
+            name:`hello,world!`,
+            age: `18`,
+
         }
     }
 
 })
 console.log(x);
 
-var testObject={
-    name: "张三",
-    age: "14",
 
-}
