@@ -1,14 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>vue_对比插值、methods和计算属性</title>
     <script src="../js/import/vue.js"></script>
+    <style>
+        #main {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        #main > div {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <div id="main">
-        <!--插值写法-->
-        <div id="insert"></div>
+<div id="main">
+    <!--插值写法-->
+    <div id="insert">
+        姓：<input type="text" v-model="firstname">
+        名：<input type="text" v-model="lastname">
+        全名：<span>{{firstname}}-{{lastname}}</span>
     </div>
+    <!-- methods写法 -->
+    <div id="methods">
+        姓：<input type="text" v-model="firstname">
+        名：<input type="text" v-model="lastname">
+        全名：<span>{{fullname()}}</span>
+    </div>
+    <!-- 计算属性写法 -->
+    <div id="computed">
+        姓：<input type="text" v-model="firstname">
+        名：<input type="text" v-model="lastname">
+        全名：<span>{{fullname}}</span>
+    </div>
+</div>
 </body>
+
+<script>
+    let insert = new Vue({
+        el: "#insert",
+        data: {
+            firstname: "张",
+            lastname: "三",
+
+        }
+    });
+
+    let methods = new Vue({
+        el: "#methods",
+        data: {
+            firstname: "张",
+            lastname: "三",
+
+        },
+        methods: {
+            fullname() {
+                return `${this.firstname}-${this.lastname}`;
+            }
+        }
+    });
+
+    let computed = new Vue({
+        el: "#computed",
+        data: {
+            firstname: "张",
+            lastname: "三",
+        },
+        computed:{
+            fullname:{
+                get() {
+                    return `${this.firstname}-${this.lastname}`;
+                }
+            }
+        }
+    })
+
+
+</script>
+
 </html>
