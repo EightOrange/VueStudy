@@ -3,83 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>vue_对比插值、methods和计算属性</title>
+    <title>vue</title>
     <script src="../js/import/vue.js"></script>
     <style>
-        #main {
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-        }
 
-        #main > div {
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 
 <body>
 <div id="main">
-    <!--插值写法-->
-    <div id="insert">
-        姓：<input type="text" v-model="firstname">
-        名：<input type="text" v-model="lastname">
-        全名：<span>{{firstname}}-{{lastname}}</span>
-    </div>
-    <!-- methods写法 -->
-    <div id="methods">
-        姓：<input type="text" v-model="firstname">
-        名：<input type="text" v-model="lastname">
-        全名：<span>{{fullname()}}</span>
-    </div>
-    <!-- 计算属性写法 -->
-    <div id="computed">
-        姓：<input type="text" v-model="firstname">
-        名：<input type="text" v-model="lastname">
-        全名：<span>{{fullname}}</span>
-    </div>
+    <ul id="main_list">
+        <li v-for="(item,index) in first_list" :key="item.code">
+            {{item.name + " " + item.code}}
+            <a @click="append_first_list">append</a>
+
+        </li>
+    </ul>
 </div>
 </body>
 
 <script>
-    let insert = new Vue({
-        el: "#insert",
+    let main = new Vue({
+        el: "#main",
         data: {
-            firstname: "张",
-            lastname: "三",
-
-        }
-    });
-
-    let methods = new Vue({
-        el: "#methods",
-        data: {
-            firstname: "张",
-            lastname: "三",
-
+            first_list: [{code: 1, name: `一级`, description: `this is first_list`}],
+            next_list: [{code: 1, name: `二级`, description: `this is next_list`}],
+            last_list: [{code: 1, name: `三级`, description: `this is last_list`}]
         },
-        methods: {
-            fullname() {
-                return `${this.firstname}-${this.lastname}`;
-            }
-        }
-    });
-
-    let computed = new Vue({
-        el: "#computed",
-        data: {
-            firstname: "张",
-            lastname: "三",
-        },
-        computed:{
-            fullname:{
-                get() {
-                    return `${this.firstname}-${this.lastname}`;
-                }
+        computed: {}, methods: {
+            append_first_list() {
+                let next_length = this.first_list.length+1;
+                let input_data={code: next_length, name: `一级`, description: `this is first_list`}
+                this.first_list.push(input_data);
             }
         }
     })
-
 
 </script>
 
